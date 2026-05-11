@@ -22,5 +22,10 @@ jobs:
       - name: Install requirements
         run: pip install -r requirements.txt
 
+      - name: Lint code
+        run: |
+          pip install flake8
+          flake8 . --max-line-length=120 --exclude=.git,__pycache__,.venv
+
       - name: Run pytest
         run: pytest
